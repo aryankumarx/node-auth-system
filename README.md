@@ -61,3 +61,10 @@ CLOUDINARY_API_SECRET=your_api_secret
 | :--- | :--- | :--- | :--- |
 | `POST` | `/api/image/upload` | Upload image to Cloudinary | Key: `image`, Value: `(file)` |
 | `GET` | `/api/image/get` | Get all images uploaded by user | N/A |
+
+### 🖼️ Image Routes
+| Method | Endpoint | Description | Query Params (Optional) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/image/upload` | Upload image to Cloudinary | N/A |
+| `GET` | `/api/image/get` | Get user images | `?page=1&limit=5&sortBy=createdAt` |
+| `DELETE` | `/api/image/delete/:id` | **Admin Only** delete image | N/A |
