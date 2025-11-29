@@ -118,12 +118,10 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Change Password Controller
+// change Password Controller
 const changePassword = async(req, res) => {
     try {
-        // FIXED: Middleware attaches to req.user, not req.userInfo
-        const userId = req.user.userId; 
-
+        const userId = req.user.userId; // middleware attaches to req.user
         const { oldPassword, newPassword } = req.body;
 
         const user = await User.findById(userId);
@@ -135,7 +133,7 @@ const changePassword = async(req, res) => {
             });
         }
 
-        // Check if old password is correct
+        // Verify old password
         const isPasswordMatch = await bcrypt.compare(oldPassword, user.password);
         if(!isPasswordMatch){
             return res.status(400).json({
@@ -144,12 +142,10 @@ const changePassword = async(req, res) => {
             });
         }
 
-        // --- MOVED LOGIC HERE ---
-        // Hash the new password
+        // Hash new password and save
         const salt = await bcrypt.genSalt(10);
         const hashedNewPassword = await bcrypt.hash(newPassword, salt);
 
-        // Update the user's password in DB
         user.password = hashedNewPassword;
         await user.save();
 
@@ -166,5 +162,4 @@ const changePassword = async(req, res) => {
         });
     }
 }
-
 module.exports = {registerUser, loginUser, changePassword};
