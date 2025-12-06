@@ -79,7 +79,7 @@ const loginUser = async (req, res) => {
     }
 
     // 3. Create token AFTER verification
-    const token = jwt.sign(
+const token = jwt.sign(
       {
         userId: user._id,
         username: user.username,
@@ -95,20 +95,7 @@ const loginUser = async (req, res) => {
       message: "Logged in successfully",
       token
     });
-
-    // hash the new password
-    const salt = await bcrypt.genSalt(10);
-    const hashedNewPassword = await bcrypt.hash(newPassword, salt);
-
-    //update the password
-    user.password = hashedNewPassword;
-    await user.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Password changed successfully"
-    });
-
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({
