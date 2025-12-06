@@ -19,7 +19,7 @@ app.use(express.json());
 
 //route
 app.get('/', (req,res)=>{
-   res.send("Helloooo");
+   res.send("Secure Node.js Authentication & File Management System is Live.");
 })
 
 app.use('/api/auth',authRoutes);
