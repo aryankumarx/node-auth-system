@@ -1,12 +1,22 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
-// Set multer storage
+
+// 1. Define the folder path
+const uploadDir = path.join(__dirname, '../uploadFolder');
+
+// 2. Create the folder if it doesn't exist (Self-healing code)
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+    console.log('Created uploadFolder successfully!');
+}
+
+
+//3. Set multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // FIXED: Use absolute path to guarantee the folder is found
         // __dirname = current folder (middleware)
-        // '..' = go up one level to root
         // 'uploadFolder' = the folder name
         cb(null, path.join(__dirname, '../uploadFolder'));
     },
