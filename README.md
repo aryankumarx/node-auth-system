@@ -68,3 +68,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 | `POST` | `/api/image/upload` | Upload image to Cloudinary | N/A |
 | `GET` | `/api/image/get` | Get user images | `?page=1&limit=5&sortBy=createdAt` |
 | `DELETE` | `/api/image/delete/:id` | **Admin Only** delete image | N/A |
+
+## 🚀 Live Demo
+Check out the live version of the project here: [Live App Link](https://node-auth-system-0xcu.onrender.com)
+> **Note:** The server allows image uploads for testing. Since this is hosted on a free instance, it may take 30-60 seconds to load initially (Cold Start).
