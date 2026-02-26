@@ -9,7 +9,7 @@ const uploadDir = path.join(__dirname, '../uploadFolder');
 // 2. Create the folder if it doesn't exist (Self-healing code)
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
-    console.log('Created uploadFolder successfully!');
+    // console.log('Created uploadFolder successfully!');
 }
 
 
