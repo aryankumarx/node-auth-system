@@ -32,7 +32,7 @@ app.use('/api/image',uploadImageRoutes);
 
 
 app.listen(PORT,()=>{
-   console.log(`Server is running on port ${PORT}`)
+   // console.log(`Server is running on port ${PORT}`)
 })
 
 
