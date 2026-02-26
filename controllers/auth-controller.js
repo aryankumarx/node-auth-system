@@ -46,7 +46,7 @@ const registerUser  = async(req,res)=>{
       }
 
    }catch(e){
-      console.log(e);
+      // console.log(e);
       res.status(500).json({
          sucess: false,
          message: 'some error occured! Please try again later'
